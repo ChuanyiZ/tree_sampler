@@ -1,0 +1,13 @@
+diff --git a/parser/create_phylowgs_inputs.py b/parser/create_phylowgs_inputs.py
+index f9ee147..5385eb5 100644
+--- a/parser/create_phylowgs_inputs.py
++++ b/parser/create_phylowgs_inputs.py
+@@ -1121,7 +1121,7 @@ def impute_missing_total_reads(total_reads, missing_variant_confidence):
+   imputed_counts = np.dot(variant_mean_reads.reshape((-1, 1)), sample_means.reshape((1, -1)))
+   nan_coords = np.where(np.isnan(total_reads))
+   total_reads[nan_coords] = imputed_counts[nan_coords]
+-  assert np.sum(total_reads <= 0) == np.sum(np.isnan(total_reads)) == 0
++  # assert np.sum(total_reads <= 0) == np.sum(np.isnan(total_reads)) == 0
+ 
+   total_reads[nan_coords] *= missing_variant_confidence
+   return np.floor(total_reads).astype(np.int)

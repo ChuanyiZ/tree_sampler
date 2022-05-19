@@ -1,0 +1,38 @@
+diff --git a/bin/pairtree b/bin/pairtree
+index c513d73..eb5fd56 100755
+--- a/bin/pairtree
++++ b/bin/pairtree
+@@ -152,13 +152,14 @@ def main():
+         parallel
+       )
+ 
+-    post_struct, post_count, post_phi, post_llh, post_prob = tree_sampler.compute_posterior(
++    post_struct, post_count, post_phi, post_llh, post_prob, post_adjm = tree_sampler.compute_posterior(
+       adjm,
+       phi,
+       llh,
+       args.sort_by_llh,
+     )
+     results.add('struct', post_struct)
++    results.add('adjm', post_adjm)
+     results.add('count', post_count)
+     results.add('phi', post_phi)
+     results.add('llh', post_llh)
+diff --git a/lib/tree_sampler.py b/lib/tree_sampler.py
+index 16013fa..2bd8dc1 100644
+--- a/lib/tree_sampler.py
++++ b/lib/tree_sampler.py
+@@ -701,6 +701,7 @@ def compute_posterior(adjms, phis, llhs, sort_by_llh=True):
+         'phi': P,
+         'llh': L,
+         'count': 1,
++        'adjm': A,
+       }
+ 
+   if sort_by_llh:
+@@ -716,4 +717,5 @@ def compute_posterior(adjms, phis, llhs, sort_by_llh=True):
+     unzipped['phi'],
+     unzipped['llh'],
+     unzipped['prob'],
++    unzipped['adjm'],
+   )

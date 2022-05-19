@@ -1,0 +1,18 @@
+diff --git a/lib/tree_sampler.py b/lib/tree_sampler.py
+index 16013fa..2bd8dc1 100644
+--- a/lib/tree_sampler.py
++++ b/lib/tree_sampler.py
+@@ -701,6 +701,7 @@ def compute_posterior(adjms, phis, llhs, sort_by_llh=True):
+         'phi': P,
+         'llh': L,
+         'count': 1,
++        'adjm': A,
+       }
+ 
+   if sort_by_llh:
+@@ -716,4 +717,5 @@ def compute_posterior(adjms, phis, llhs, sort_by_llh=True):
+     unzipped['phi'],
+     unzipped['llh'],
+     unzipped['prob'],
++    unzipped['adjm'],
+   )

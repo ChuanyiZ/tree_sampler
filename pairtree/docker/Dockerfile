@@ -26,13 +26,13 @@ COPY --from=build /home/pairtree /home/pairtree
 # RUN conda create --name pairtree -c conda-forge python=3.7 numpy scipy scikit-learn tqdm numba colorlover plotly
 # SHELL ["conda", "run", "-n", "pairtree", "/bin/bash", "-c"]
 
-RUN pip install numpy scipy scikit-learn tqdm numba colorlover plotly pickle pandas 
+RUN pip install numpy scipy scikit-learn tqdm numba colorlover plotly pandas 
 
-COPY ./code/getParams.py ./code/printtree.py .code/clusterToMutationMapping.py ./code/collectTrajectories.py /home/pairtree/misc/
+COPY ./code/getParams.py ./code/printtree.py ./code/clusterToMutationMapping.py ./code/collectTrajectories.py /home/pairtree/misc/
 
 RUN mkdir -p /home/patch
 
-COPY ./code/*.patch /home/patch
+COPY ./code/all.patch /home/patch/
 
 RUN cd /home/pairtree/ && \
     git apply /home/patch/all.patch

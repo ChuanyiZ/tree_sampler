@@ -44,7 +44,7 @@ COPY --from=build /home/phylowgs /home/phylowgs
 
 COPY ./code /code
 
-RUN pip install numpy scipy ete2 pyvcf
+RUN pip install numpy scipy ete2 pyvcf pandas
 
 RUN cp /code/*.py /home/phylowgs/parser && \
     cd /home/phylowgs && \

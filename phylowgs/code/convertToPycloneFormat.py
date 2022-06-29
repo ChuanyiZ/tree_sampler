@@ -24,7 +24,7 @@ def main():
     df['sample_id'] = fileNameBase
     #adding in default copy numbers - assuming no copy number information is available.
     #This assumes a major/minor/normal copy number of 1/1/2, with a var_read_prob of .5 for autosomes or female X chromosomes- which are assumed to have a mu_v of .499, and
-    #copy numbers of 1/1/1, with a var_read_prob of 1 for male sex chromosomes - which are assumed to have a mu_v of .001.
+    #copy numbers of 1/0/1, with a var_read_prob of 1 for male sex chromosomes - which are assumed to have a mu_v of .001.
     #These assumptions may not be valid and should be checked once female data is identified.
 
     #Note: Once copy number data is available, change 'major_cn', 'minor_cn', and 'normal_cn' to be the major_cn, minor_cn, and normal_cn columns
@@ -35,6 +35,7 @@ def main():
     maleSexChromosome = df['mu_v'] == .001
     df.loc[autosomal, 'normal_cn'] = 2
     df.loc[maleSexChromosome, 'normal_cn'] = 1
+    df.loc[maleSexChromosome, 'minor_cn'] = 0
     #adding in default variant read probabilities
 
     #Note: Once CNV data is available, change 'var_read_prob' to be dependent upon major_cn, minor_cn, and normal_cn columns

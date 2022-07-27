@@ -39,9 +39,6 @@ def main():
         usedNodes = [0]
         create_tree(adjm, p, N, 0, [], trajectories, clusterMutationMap, usedNodes.copy())
 
-    for traj in trajectories:
-        print(traj)
-        
     fh = open(args.out_fn, 'wb')
     pickle.dump(trajectories, fh)
 

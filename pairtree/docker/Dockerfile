@@ -28,7 +28,7 @@ COPY --from=build /home/pairtree /home/pairtree
 
 RUN pip install numpy scipy scikit-learn tqdm numba colorlover plotly pandas matplotlib
 
-COPY ./code/getParams.py ./code/printtree.py ./code/clusterToMutationMapping.py ./code/collectTrajectories.py /home/pairtree/misc/
+COPY ./code/getParams.py ./code/printtree.py ./code/clusterToMutationMapping.py ./code/collectTrajectories.py ./code/createTrajectoriesWithProb.py /home/pairtree/misc/
 
 RUN mkdir -p /home/patch
 
